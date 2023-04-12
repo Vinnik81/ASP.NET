@@ -1,0 +1,57 @@
+﻿
+@{
+    
+    ViewBag.Title = "Index";
+}
+
+<h1>Index</h1>
+<h2>Phone : @ViewBag.Number</h2>
+<h2>Name : @ViewBag.Name</h2>
+<h2>Salary : @ViewBag.Salary</h2>
+<hr />
+<h2>Salary : @ViewData["Salary"]</h2>
+<h2>Number : @ViewData["Number"]</h2>
+<h3>@ViewBag.Lists[0]</h3>
+<h3>@ViewBag.Lists[1]</h3>
+<h3>@ViewBag.Lists[2]</h3>
+
+<ul>
+    @foreach (var item in ViewBag.Lists)
+    {
+        <li>@item</li>
+    }
+</ul>
+
+
+<hr />
+@if (TempData.ContainsKey("message"))
+{
+    <h1>@TempData["message"]</h1>
+}
+
+@*@{
+        Layout = null;
+        int x = 10;
+        x++;
+        if (true)
+        {
+
+        }
+        for (int i = 0; i < 10; i++)
+        {
+
+        }
+    }
+
+    <!DOCTYPE html>
+
+    <html>
+    <head>
+        <meta name="viewport" content="width=device-width" />
+        <title>Index</title>
+        <link rel="stylesheet" href="~/css/Style.css"/>
+    </head>
+    <body>
+        <h1>Hello World!</h1>
+    </body>
+    </html>*@
