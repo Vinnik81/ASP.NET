@@ -1,0 +1,17 @@
+﻿@model HomeWork1_CV.ViewModels.CVViewModels
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-left">
+    <h1 class="display-4">Персональные данные</h1>
+    <div class="name">
+        <h2>Имя: <i>@Model.Person.Name</i></h2>
+        <h2>Фамилия: <i>@Model.Person.Surname</i></h2>
+        <h4>Возраст: <i>@Model.Person.Age</i></h4>
+        <h4>Дата рождения: <i>@Model.Person.DateOfBith</i></h4>
+        <h4>Место родения: <i>@Model.Person.BirthPlace</i></h4>
+    </div>
+    
+</div>

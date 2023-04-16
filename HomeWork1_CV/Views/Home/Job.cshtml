@@ -1,0 +1,18 @@
+﻿@model HomeWork1_CV.ViewModels.CVViewModels
+
+@{
+    ViewData["Title"] = "Job";
+}
+
+<div class="text-left">
+    <h1 class="display-4">Опыт работы</h1>
+    <div class="name">
+        <h2><i>@Model.Person.Name</i> <i>@Model.Person.Surname</i></h2>
+        @foreach (var item in Model.Jobs.Job)
+        {
+            <h4>Годы работы: <i>@item.DateOfJob</i></h4>
+            <h4>Организация: <i>@item.Organisation</i></h4>
+            <h4>Должность: <i>@item.Position</i></h4>
+        }
+    </div>
+

@@ -1,0 +1,18 @@
+﻿@model HomeWork1_CV.ViewModels.CVViewModels
+
+@{
+    ViewData["Title"] = "Skill";
+}
+
+<div class="text-left">
+    <h1 class="display-4">Образование</h1>
+    <div class="name">
+        <h2><i>@Model.Person.Name</i> <i>@Model.Person.Surname</i></h2>
+        @foreach (var item in Model.Skills.Skill)
+        {
+            <h4>Годы обучения: <i>@item.DateSkill</i></h4>
+            <h4>Образовательное учериждение: <i>@item.Scool</i></h4>
+            <h4>Квалификация: <i>@item.Qualification</i></h4>
+        }
+    </div>
+

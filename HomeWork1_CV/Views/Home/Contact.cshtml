@@ -1,0 +1,15 @@
+﻿@model HomeWork1_CV.ViewModels.CVViewModels
+
+@{
+    ViewData["Title"] = "Contact";
+}
+
+<div class="text-left">
+    <h1 class="display-4">Контакты</h1>
+    <div class="name">
+        <h2> <i>@Model.Person.Name</i> <i>@Model.Person.Surname</i></h2>
+        <h2>Место жительства: <i>@Model.Contact.Location</i></h2>
+        <h4>Телефон: <i>@Model.Contact.Phone</i></h4>
+        <h4>Email: <i>@Model.Contact.Email</i></h4>
+    </div>
+
