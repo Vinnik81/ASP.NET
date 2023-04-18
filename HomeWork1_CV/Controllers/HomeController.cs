@@ -1,15 +1,26 @@
-﻿using HomeWork1_CV.Models;
+﻿using DinkToPdf;
+using DinkToPdf.Contracts;
+using HomeWork1_CV.Models;
+using HomeWork1_CV.Utility;
 using HomeWork1_CV.ViewModels;
+using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Controllers;
+using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.AspNetCore.Mvc.ViewFeatures;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
+using RouteAttribute = Microsoft.AspNetCore.Mvc.RouteAttribute;
 
 namespace HomeWork1_CV.Controllers
 {
+    [Route("api/pdfcreator")]
+    [ApiController]
     public class HomeController : Controller
     {
         
@@ -125,6 +136,47 @@ namespace HomeWork1_CV.Controllers
         {
             return View();
         }
+
+        private IConverter _converter;
+
+        public HomeController(IConverter converter)
+        {
+            _converter = converter;
+        }
+
+        [HttpGet]
+        public IActionResult CreatePDF()
+        {
+            var globalSettings = new GlobalSettings
+            {
+                ColorMode = ColorMode.Color,
+                Orientation = Orientation.Portrait,
+                PaperSize = PaperKind.A4,
+                Margins = new MarginSettings { Top = 10 },
+                DocumentTitle = "PDF Report",
+                Out = @"G:\project\ASP.NET Core\HomeWork1_CV"
+            };
+
+            var objectSettings = new ObjectSettings
+            {
+                PagesCount = true,
+                HtmlContent = TemplateGenerator.GetHTMLString(),
+                WebSettings = {DefaultEncoding = "utf-8", UserStyleSheet = Path.Combine(Directory.GetCurrentDirectory(), "assets", "site.css")},
+                HeaderSettings = {FontName = "Arial", FontSize = 9, Right = "Page [page] of [toPage]", Line = true },
+                FooterSettings = { FontName = "Arial", FontSize = 9, Line = true, Center = "Report Footer" }
+            };
+
+            var pdf = new HtmlToPdfDocument()
+            {
+                GlobalSettings = globalSettings,
+                Objects = { objectSettings }
+            };
+
+            _converter.Convert(pdf);
+
+            return Ok("Successfully created PDF document.");
+        }
+
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
