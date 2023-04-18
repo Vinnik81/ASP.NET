@@ -172,9 +172,9 @@ namespace HomeWork1_CV.Controllers
                 Objects = { objectSettings }
             };
 
-            _converter.Convert(pdf);
+           var file = _converter.Convert(pdf);
 
-            return Ok("Successfully created PDF document.");
+            return File(file ,"application/pdf");
         }
 
 
