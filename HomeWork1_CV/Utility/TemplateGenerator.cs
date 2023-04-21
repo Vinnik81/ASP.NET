@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace HomeWork1_CV.Utility
 {
@@ -11,81 +8,29 @@ namespace HomeWork1_CV.Utility
         public static string GetHTMLString()
         {
             var sb = new StringBuilder();
-            sb.Append(@" <html lang='en'>
+            sb.Append(@"<!DOCTYPE html>
+<html lang='en'>
 < head >
     < meta charset = 'utf-8' />
     < meta name = 'viewport' content = 'width=device-width, initial-scale=1.0' />
     < title > @ViewData['Title'] - HomeWork1_CV </ title >
     < link rel = 'stylesheet' href = '~/lib/bootstrap/dist/css/bootstrap.min.css' />
     < link rel = 'stylesheet' href = '~/css/site.css' />
-</ head >
-< body >
-    < header >
-        < nav class='navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3'>
-            <div class='container'>
-                <a class='navbar-brand' asp-area="" asp-controller='Home' asp-action='Index'>HomeWork1_CV</a>
-                <button class='navbar-toggler' type='button' data-toggle='collapse' data-target='.navbar-collapse' aria-controls='navbarSupportedContent'
-                        aria-expanded='false' aria-label='Toggle navigation'>
-                    <span class='navbar-toggler-icon'></span>
-                </button>
-                <div class='navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse'>
-                    <ul class='navbar-nav flex-grow-1'>
-                        <li class='nav-item'>
-                            <a class='nav-link text-dar' asp-area="" asp-controller='Home' asp-action='Index'>Home</a>
-                        </li>
-                        <li class='nav-item'>
-                            <a class='nav-link text-dark' asp-area="" asp-controller='Home' asp-action='Contact'>Contact</a>
-                        </li>
-                        <li class='nav-item'>
-                            <a class='nav-link text-dark' asp-area="" asp-controller='Home' asp-action='Skill'>Skills</a>
-                        </li>
-                        <li class='nav-item'>
-                            <a class='nav-link text-dark' asp-area="" asp-controller='Home' asp-action='Job'>Jobs</a>
-                        </li>
-                        <li class='nav-item'>
-                            <a class='nav-link text-dark' asp-area="" asp-controller='Home' asp-action='Privacy'>Privacy</a>
-                        </li>
-                        <li class='nav-item'>
-                            <a class='nav-link text-dark' asp-area="" asp-controller='Home' asp-action='Privacy'>
-                                <a href = '@Url.Action('CreatePdf')' download='my_data.pdf'>Save PDF file</a>
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
-    </header>
-    <div class='card mb-3' style='max-width: 100%;'>
-        <div class='row g-0'>
-            <div class='col-md-2'>
-                <img src = '~/IMG_20220811_122756.jpg' class='img-fluid rounded-start' alt='Photo Profile'>
-            </div>
-            <div class='col-md-8'>
-                <div class='card-body bg-info text-dark'>
-                    <h1 class='card-header'>Краткая биография</h1>
-                </div>
-                <div class='container'>
-
-                    <main role = 'main' class='pb-3'>
-                        @RenderBody()
-                    </main>
-                </div>
-            </div>
-        </div>
+</ head > 
+<body>
+<div class='text - left'>
+    < h1 class='display-4'>Персональные данные</h1>
+    <div class='name'>
+        <h2>Имя: <i>@Model.Person.Name</i></h2>
+        <h2>Фамилия: <i>@Model.Person.Surname</i></h2>
+        <h4>Возраст: <i>@Model.Person.Age</i></h4>
+        <h4>Дата рождения: <i>@Model.Person.DateOfBith</i></h4>
+        <h4>Место родения: <i>@Model.Person.BirthPlace</i></h4>
     </div>
     
-
-    <footer class='border-top footer text-muted'>
-        <div class='container'>
-            &copy; 2023 - HomeWork1_CV - <a asp-area="" asp-controller='Home' asp-action='Privacy'>Privacy</a>
-        </div>
-    </footer>
-    <script src = '~/lib/jquery/dist/jquery.min.js' ></ script >
-    < script src='~/lib/bootstrap/dist/js/bootstrap.bundle.min.js'></script>
-    <script src = '~/js/site.js' asp-append-version='true'></script>
-    @RenderSection('Scripts', required: false)
+</div>
 </body>
-</html>");
+");
             return sb.ToString();
         }
     }
