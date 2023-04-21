@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Movie_2.Extensions;
 using Movie_2.Options;
 using Movie_2.Services;
 using System;
@@ -31,15 +32,21 @@ namespace Movie_2
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
-            services.AddScoped<IMovieApiService ,MovieApiService>();
+            //services.AddScoped<IMovieApiService ,MovieApiService>();
             //services.AddSingleton<IMovieApiService ,MovieApiService>();
             //services.AddTransient<IMovieApiService ,MovieApiService>();
             services.AddHttpClient();
-            services.Configure<MovieApiOptions>(options =>
+            services.AddMovieApi(options =>
             {
                 options.ApiKey = Configuration[("MovieApi:ApiKey")];
                 options.BaseUrl = Configuration[("MovieApi:BaseUrl")];
             });
+            //services.Configure<MovieApiOptions>(options =>
+            //{
+            //    options.ApiKey = Configuration[("MovieApi:ApiKey")];
+            //    options.BaseUrl = Configuration[("MovieApi:BaseUrl")];
+            //});
+            services.AddMemoryCache();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
