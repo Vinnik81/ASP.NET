@@ -1,15 +1,12 @@
-﻿@model Artist
+﻿@model Result
 @*
     For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
 *@
 
-@for (int i = 0; i < Model.image.Length; i++)
-{
-    <img src="@Model.image[i].text" class="card-img-top" alt="..." />
-}
+    <img src="@Model.cover_image" class="card-img-top" alt="..." />
 
 
 <div class="card-body">
-    <h5 class="card-title">@Model.name</h5>
-    <p class="card-text">Artist: @Model.url</p>
+    <h5 class="card-title">@Model.title</h5>
+    <p class="card-text">Artist: @Model.style</p>
 </div>

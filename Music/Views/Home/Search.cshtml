@@ -6,10 +6,10 @@
 @*@if (Model.Artist[0].Name != null)*@
 
     <h1>Search @ViewBag.SearchName</h1>
-    <p>@ViewBag.Results</p>
+    @*<p>@ViewBag.Results</p>*@
 
     <div class="row">
-        @foreach (Artist item in Model.results.artistmatches.artist)
+        @foreach (Result item in Model.results)
         {
             <div class="card col-3">
                 <partial name="_MusicCardPartial" model="@item"></partial>

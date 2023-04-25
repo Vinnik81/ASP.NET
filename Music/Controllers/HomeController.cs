@@ -43,10 +43,7 @@ namespace Music.Controllers
             {
                 musics = await musicApiService.SearchByNameAsync(title);
                 ViewBag.SearchName = title;
-                foreach (Artist item in musics.results.artistmatches.artist)
-                {
-                    ViewBag.Results = item;
-                }
+                ViewBag.Results = musics.results;
                 
             }
             return View(musics);

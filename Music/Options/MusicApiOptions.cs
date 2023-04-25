@@ -8,6 +8,7 @@ namespace Music.Options
     public class MusicApiOptions
     {
         public string Apikey { get; set; }
+        public string Key { get; set; }
         public string BaseUrl { get; set; }
     }
 }

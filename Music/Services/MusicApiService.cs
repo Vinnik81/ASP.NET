@@ -27,18 +27,18 @@ namespace Music.Services
             this.memoryCache = memoryCache;
         }
 
-        public async Task<MusicApiResponse> SearchByNameAsync(string name)
+        public async Task<MusicApiResponse> SearchByNameAsync(string title)
         {
-            name = name.ToLower();
+            title = title.ToLower();
             MusicApiResponse musics;
-            if (!memoryCache.TryGetValue(name, out musics))
+            if (!memoryCache.TryGetValue(title, out musics))
             {
-                var result = await httpClient.GetStringAsync($"{musicApiOptions.BaseUrl}?method=artist.search&artist={name}&api_key={musicApiOptions.Apikey}&format=json");
+                var result = await httpClient.GetStringAsync($"{musicApiOptions.BaseUrl}search?q={title}&key={musicApiOptions.Key}&secret={musicApiOptions.Apikey}");
                 musics = JsonConvert.DeserializeObject<MusicApiResponse>(result);
 
                 var cacheTime = new MemoryCacheEntryOptions();
                 cacheTime.SetAbsoluteExpiration(TimeSpan.FromDays(1));
-                memoryCache.Set(name, musics, cacheTime);
+                memoryCache.Set(title, musics, cacheTime);
             }
             return musics;
         }

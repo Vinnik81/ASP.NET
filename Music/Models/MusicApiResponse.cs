@@ -1,4 +1,5 @@
 ﻿public class MusicApiResponse
 {
-    public Results results { get; set; }
+    public Pagination pagination { get; set; }
+    public Result[] results { get; set; }
 }
