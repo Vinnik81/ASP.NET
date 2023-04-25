@@ -9,7 +9,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Movie", "Movie\Movie.csproj
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HomeWork1_CV", "HomeWork1_CV\HomeWork1_CV.csproj", "{9F238453-209E-4747-8006-CE41ED5DB36E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Movie_2", "Movie_2\Movie_2.csproj", "{380E40E1-9274-4EA0-B099-7B0394BCA720}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Movie_2", "Movie_2\Movie_2.csproj", "{380E40E1-9274-4EA0-B099-7B0394BCA720}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Music", "Music\Music.csproj", "{F11DA3F3-6B10-4BBC-83B9-40860E356B9F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{380E40E1-9274-4EA0-B099-7B0394BCA720}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{380E40E1-9274-4EA0-B099-7B0394BCA720}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{380E40E1-9274-4EA0-B099-7B0394BCA720}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F11DA3F3-6B10-4BBC-83B9-40860E356B9F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F11DA3F3-6B10-4BBC-83B9-40860E356B9F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F11DA3F3-6B10-4BBC-83B9-40860E356B9F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F11DA3F3-6B10-4BBC-83B9-40860E356B9F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
