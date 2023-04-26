@@ -1,4 +1,6 @@
 ﻿public class MusicApiResponse
 {
-    public Results results { get; set; }
+    public Datum[] data { get; set; }
+    public int total { get; set; }
+    public string next { get; set; }
 }

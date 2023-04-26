@@ -18,9 +18,9 @@ namespace Music
         {
             Configuration = configuration;
             Console.WriteLine(configuration.GetValue<string>("Title"));
-            Console.WriteLine(configuration.GetSection("MusicApi").GetValue<string>("ApiKey"));
+            //Console.WriteLine(configuration.GetSection("MusicApi").GetValue<string>("ApiKey"));
             Console.WriteLine(configuration.GetSection("MusicApi").GetValue<string>("BaseUrl"));
-            Console.WriteLine(configuration["MusicApi:ApiKey"]);
+            //Console.WriteLine(configuration["MusicApi:ApiKey"]);
             Console.WriteLine(configuration["MusicApi:BaseUrl"]);
         }
 
@@ -33,7 +33,7 @@ namespace Music
             services.AddHttpClient();
             services.AddMusicApi(options =>
             {
-                options.Apikey = Configuration[("MusicApi:ApiKey")];
+                //options.Apikey = Configuration[("MusicApi:ApiKey")];
                 options.BaseUrl = Configuration[("MusicApi:BaseUrl")];
             });
             services.AddMemoryCache();

@@ -3,19 +3,20 @@
     ViewData["Title"] = "Search";
 }
 
-@*@if (Model.Artist[0].Name != null)*@
-
+@if (Model.total > 0)
+{
     <h1>Search @ViewBag.SearchName</h1>
-    <p>@ViewBag.Results</p>
+    @*<p>@ViewBag.Results</p>*@
 
     <div class="row">
-        @foreach (Artist item in Model.results.artistmatches.artist)
+        @foreach (Datum item in Model.data)
         {
             <div class="card col-3">
                 <partial name="_MusicCardPartial" model="@item"></partial>
             </div>
         }
     </div>
+}
 
 
 
