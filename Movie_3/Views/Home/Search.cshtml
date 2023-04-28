@@ -1,0 +1,29 @@
+﻿@model MovieApiResponse
+@{
+    ViewData["Title"] = "Search";
+}
+
+@if (Model.Response != "False")
+{
+    <h1>Search @ViewBag.SearchTitle</h1>
+    
+
+    <div class="row">
+        @foreach (Search item in @Model.Search)
+        {
+            
+
+            <div class="card col-3">
+                <partial name="_MovieCardPartial" model="@item"></partial>
+            </div>
+            
+        }
+
+
+    </div>
+}
+else
+{
+    <h1>Not found</h1>
+}
+
