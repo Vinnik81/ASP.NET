@@ -49,6 +49,16 @@ namespace Music.Controllers
             return View(musics);
         }
 
+        public async Task<IActionResult> Music(string title)
+        {
+            MusicApiResponse musics = null;
+            if (title != null)
+            {
+                musics = await musicApiService.SearchByTrackAsync(title);
+            }
+            return View(musics);
+        }
+
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {

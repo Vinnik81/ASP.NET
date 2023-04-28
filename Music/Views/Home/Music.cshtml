@@ -1,0 +1,36 @@
+﻿@model MusicApiResponse
+@{
+    ViewData["Title"] = "Music";
+}
+
+<h1>Track List</h1>
+
+<div class="row">
+    <div class="col-9">
+        @foreach (Datum item in Model.data)
+        {
+            @if (item.title != null)
+            {
+                <h2>@item.title</h2>
+                <p>@item.album.tracklist</p>
+            }
+            else
+            {
+                <h2>Album not found</h2>
+            }
+        }
+
+    </div>
+    <div class="col-3">
+        @foreach (Datum item in Model.data)
+        {
+            @if (item.title != null)
+            {
+                <partial name="_MusicCardPartial" model="@item.album"></partial>
+            }
+        }
+
+
+    </div>
+</div>
+

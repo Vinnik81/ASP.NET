@@ -6,8 +6,14 @@
     <img src="@Model.album.cover_medium" class="card-img-top" alt="..." />
 
 
-<div class="card-body">
-    <h5 class="card-title">@Model.artist.name</h5>
-    <p class="card-text">Album: @Model.album.title</p>
-    <audio src="@Model.preview" controls>Play</audio>
-</div>
+    <div class="card-body">
+        <h5 class="card-title">@Model.artist.name</h5>
+        <p class="card-text">Album: @Model.album.title</p>
+        <audio src="@Model.preview" controls>Play</audio>
+
+        @if (Model.album.type == "album")
+        {
+            <a asp-action="Music" asp-controller="Home" asp-route-id="@Model.album.id" class="btn btn-primary">Track List</a>
+        }
+    </div>
+
