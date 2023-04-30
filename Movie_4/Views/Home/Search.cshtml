@@ -1,0 +1,56 @@
+﻿@model MovieApiResponse
+@{
+    ViewData["Title"] = "Search";
+}
+
+@if (Model.Response != "False")
+{
+    <h1>Search @ViewBag.SearchTitle</h1>
+    <small>Result : @Model.TotalResults</small>
+    
+
+    <div class="row">
+        @foreach (Cinema item in @Model.Movies)
+        {
+
+
+            <div class="col-3">
+                <partial name="_MovieCardPartial" model="@item"></partial>
+            </div>
+
+        }
+
+        <nav aria-label="Page navigation example ">
+            <ul class="m-3 pagination d-flex align-content-center justify-content-center">
+                @if (ViewBag.CurrentPage > 1)
+                {
+                    <li class="page-item"><a asp-action="Search" asp-controller="Home" asp-route-title="@ViewBag.SearchTitle" asp-route-page="@(ViewBag.CurrentPage-1)" class="page-link">Previous</a></li>
+                }
+                @for (var i = ViewBag.CurrentPage; i <= ViewBag.CurrentPage + 2 && i <= ViewBag.TotalPages; i++)
+                {
+                    <li class="page-item @(ViewBag.CurrentPage==i ? "active":"")"><a asp-action="Search" asp-controller="Home" asp-route-title="@ViewBag.SearchTitle" asp-route-page="@i" class="page-link">@i</a></li>
+                }
+                @if (ViewBag.CurrentPage != ViewBag.TotalPages)
+                {
+
+                    <li>...</li>
+                    <li class="page-item"><a asp-action="Search" asp-controller="Home" asp-route-title="@ViewBag.SearchTitle" asp-route-page="@(ViewBag.TotalPages)" class="page-link">@ViewBag.TotalPages</a></li>
+
+                }
+
+                @if (ViewBag.CurrentPage < ViewBag.TotalPages)
+                {
+                    <li class="page-item"><a asp-action="Search" asp-controller="Home" asp-route-title="@ViewBag.SearchTitle" asp-route-page="@(ViewBag.CurrentPage+1)" class="page-link">Next</a></li>
+
+                }
+            </ul>
+        </nav>
+
+
+    </div>
+}
+else
+{
+    <h1>Not found</h1>
+}
+

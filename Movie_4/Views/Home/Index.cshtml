@@ -1,0 +1,17 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+@*@Html.MovieLink()*@
+@*@Html.EmalLink("358979037vvv@gmail.com","Vladimir")*@
+@*@Html.EmalLink2("358979037vvv@gmail.com", "Vladimir")*@
+@*<email-link email="358979037vvv@gmail.com" my-title="Vladimir"></email-link>*@
+@*<a my-email="358979037vvv@gmail.com" my-title="Vladimir"></a>*@
+
+<div class="text-center">
+    <h1 class="display-4">Movie</h1>
+    <form method="get" action="/Home/Search" class="input-group mb-3">
+        <input name="title" type="text" class="form-control" placeholder="Recipient's username" aria-label="Recipient's title" aria-describedby="button-addon2">
+        <button class="btn btn-outline-secondary" type="button" id="button-addon2">Search</button>
+    </form>
+</div>
