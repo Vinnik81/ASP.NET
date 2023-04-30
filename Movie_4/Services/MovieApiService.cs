@@ -29,18 +29,18 @@ namespace Movie_4.Services
             this.memoryCache = memoryCache;
         }
 
-        public async Task<MovieApiResponse> SearchByTitleAsync(string title, int page)
+        public async Task<MovieApiResponse> SearchByTitleAsync(string title, int page = 1)
         {
             title = title.ToLower();
             MovieApiResponse movies;
-            if (!memoryCache.TryGetValue(title, out movies))
+            if (!memoryCache.TryGetValue($"{title} {page}", out movies))
             {
                 var result = await httpClient.GetStringAsync($"{movieApiOptions.BaseUrl}?s={title}&apikey={movieApiOptions.ApiKey}&page={page}");
                 movies = JsonConvert.DeserializeObject<MovieApiResponse>(result);
 
                 var cacheTime = new MemoryCacheEntryOptions();
                 cacheTime.SetAbsoluteExpiration(TimeSpan.FromDays(1));
-                memoryCache.Set(title, movies, cacheTime);
+                memoryCache.Set($"{title} {page}", movies, cacheTime);
             }
 
             return movies;

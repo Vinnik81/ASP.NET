@@ -5,6 +5,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Movie_4.Extensions;
+using Movie_4.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -31,6 +32,8 @@ namespace Movie_4
         {
             services.AddControllersWithViews();
             services.AddHttpClient();
+            services.AddSingleton<IRecentMovieStorage, RecentMovieStorage>();
+
             services.AddMovieApi(options =>
             {
                 options.ApiKey = Configuration[("MovieApi:ApiKey")];

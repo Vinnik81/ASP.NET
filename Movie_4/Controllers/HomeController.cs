@@ -2,6 +2,7 @@
 using Microsoft.Extensions.Logging;
 using Movie_4.Models;
 using Movie_4.Services;
+using Movie_4.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -19,15 +20,17 @@ namespace Movie_4.Controllers
         //    _logger = logger;
         //}
         private readonly IMovieApiService movieApiService;
+        private readonly IRecentMovieStorage recentMovieStorage;
 
-        public HomeController(IMovieApiService movieApiService)
+        public HomeController(IMovieApiService movieApiService, IRecentMovieStorage recentMovieStorage)
         {
             this.movieApiService = movieApiService;
+            this.recentMovieStorage = recentMovieStorage;
         }
 
         public IActionResult Index()
         {
-            return View();
+            return View(recentMovieStorage.GetCinemas());
         }
 
         public IActionResult Privacy()
@@ -35,20 +38,45 @@ namespace Movie_4.Controllers
             return View();
         }
 
+        //public async Task<IActionResult> Search(string title, int page = 1)
+        //{
+        //    MovieApiResponse movies = null;
+        //    if (title != null)
+        //    {
+        //        // MovieApiService apiService = new MovieApiService();
+        //        movies = await movieApiService.SearchByTitleAsync(title, page);
+
+        //        ViewBag.TotalPages = (int)Math.Ceiling(int.Parse(movies.TotalResults) / 10.0);
+        //        ViewBag.SearchTitle = title;
+        //        ViewBag.CurrentPage = page;
+        //        ViewBag.PageSize = 5;
+        //        ViewBag.Result = movies.Response;
+        //    }
+
+        //    return View(movies);
+        //}
+
         public async Task<IActionResult> Search(string title, int page = 1)
         {
-            MovieApiResponse movies = null;
+            HomeSearchViewModel results = null;
             if (title != null)
             {
                 // MovieApiService apiService = new MovieApiService();
-                movies = await movieApiService.SearchByTitleAsync(title, page);
+                MovieApiResponse movies = await movieApiService.SearchByTitleAsync(title, page);
 
-                ViewBag.TotalPage = (int)Math.Ceiling(int.Parse(movies.TotalResults) / 10.0);
-                ViewBag.SearchTitle = title;
-                ViewBag.Result = movies.Response;
+                results = new HomeSearchViewModel
+                {
+                    Cinemas = movies.Movies,
+                    CurrentPage = page,
+                    Title = title,
+                    TotalPages = (int)Math.Ceiling(int.Parse(movies.TotalResults) / 10.0),
+                    PageCount = 4,
+                    TotalResults = int.Parse(movies.TotalResults),
+                    Response = movies.Response
+                };
             }
 
-            return View(movies);
+            return View(results);
         }
 
         public async Task<IActionResult> Movie(string id)
@@ -58,7 +86,7 @@ namespace Movie_4.Controllers
             {
                 // MovieApiService apiService = new MovieApiService();
                 movies = await movieApiService.SearchByIdAsync(id);
-
+                recentMovieStorage.Add(movies);
             }
 
             return View(movies);
