@@ -43,17 +43,17 @@ namespace Music.Services
             return musics;
         }
 
-        public async Task<MusicApiResponse> SearchByTrackAsync(string title)
+        public async Task<MusicApiAlbum> SearchByTrackAsync(int id)
         {
-            MusicApiResponse music;
-            if (!memoryCache.TryGetValue(title, out music))
+            MusicApiAlbum music;
+            if (!memoryCache.TryGetValue(id, out music))
             {
-                var result = await httpClient.GetStringAsync($"{musicApiOptions.BaseUrl}search?q={title}");
-                music = JsonConvert.DeserializeObject<MusicApiResponse>(result);
+                var result = await httpClient.GetStringAsync($"{musicApiOptions.BaseUrl}album/{id}");
+                music = JsonConvert.DeserializeObject<MusicApiAlbum>(result);
 
                 var cacheTime = new MemoryCacheEntryOptions();
                 cacheTime.SetAbsoluteExpiration(TimeSpan.FromDays(1));
-                memoryCache.Set(title, music, cacheTime);
+                memoryCache.Set(id, music, cacheTime);
             }
             return music;
         }

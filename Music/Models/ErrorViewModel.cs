@@ -1,3 +1,4 @@
+
 namespace Music.Models
 {
     public class ErrorViewModel

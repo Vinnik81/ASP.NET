@@ -49,12 +49,12 @@ namespace Music.Controllers
             return View(musics);
         }
 
-        public async Task<IActionResult> Music(string title)
+        public async Task<IActionResult> Music(int id)
         {
-            MusicApiResponse musics = null;
-            if (title != null)
+            MusicApiAlbum musics = null;
+            if (id != null)
             {
-                musics = await musicApiService.SearchByTrackAsync(title);
+                musics = await musicApiService.SearchByTrackAsync(id);
             }
             return View(musics);
         }
