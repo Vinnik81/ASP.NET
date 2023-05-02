@@ -24,6 +24,39 @@ a {
   border-color: #1861ac;
 }
 
+.img-container {
+    height: 250px;
+    position: relative;
+}
+
+.card .img-blur {
+    filter: blur(5px);
+    background-position: center;
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    z-index: 2;
+}
+
+.card img {
+    height: 90%;
+    object-fit: contain;
+    position: relative;
+    z-index: 4;
+}
+
+.card {
+    margin: 3px;
+    overflow: hidden;
+}
+
+.card-body {
+    font-size: 10px;
+    height: 200px;
+}
+
 /* Sticky footer styles
 -------------------------------------------------- */
 html {

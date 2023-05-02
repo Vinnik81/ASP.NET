@@ -3,7 +3,13 @@
     For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
 *@
 
-    <img src="@Model.album.cover_medium" class="card-img-top" alt="..." />
+<div class="card">
+    <div class="img-container">
+        <div class="img-blur" style="background-image:url(@Model.album.cover_medium)"></div>
+        <img src="@Model.album.cover_medium" class="card-img-top" alt="..." />
+    </div>
+</div>
+    
 
 
     <div class="card-body">
@@ -13,7 +19,9 @@
 
         @if (Model.album.type == "album")
         {
-            <a asp-action="Music" asp-controller="Home" asp-route-id="@Model.album.id" class="btn btn-primary">Track List</a>
+            @*<a asp-action="Music" asp-controller="Home" asp-route-id="@Model.album.id" class="btn btn-primary">Track List</a>*@
+
+            <a music="@Model"></a>
         }
     </div>
 
