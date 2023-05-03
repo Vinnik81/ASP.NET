@@ -1,15 +1,16 @@
-﻿@model MusicApiResponse
+﻿@model HomeSearchViewModel
 @{
     ViewData["Title"] = "Search";
 }
 
-@if (Model.total > 0)
+@if (Model.Total > 0)
 {
-    <h1>Search @ViewBag.SearchName</h1>
+    <h1>Search @Model.Title</h1>
+    <small>Result: @Model.Total</small>
     @*<p>@ViewBag.Results</p>*@
 
     <div class="row">
-        @foreach (Datum item in Model.data)
+        @foreach (Datum item in Model.Musics)
         {
             <div class="card col-3">
                 <partial name="_MusicCardPartial" model="@item"></partial>
@@ -18,19 +19,33 @@
     </div>
     <nav aria-label="Page navigation example">
         <ul class="pagination d-flex align-content-center justify-content-center">
-            <li class="page-item">
-                <a class="page-link" href="#" aria-label="Previous">
-                    <span aria-hidden="true">&laquo;</span>
-                </a>
-            </li>
-            <li class="page-item"><a class="page-link" href="#">1</a></li>
-            <li class="page-item"><a class="page-link" href="#">2</a></li>
-            <li class="page-item"><a class="page-link" href="#">3</a></li>
-            <li class="page-item">
-                <a class="page-link" href="#" aria-label="Next">
-                    <span aria-hidden="true">&raquo;</span>
-                </a>
-            </li>
+            @if (Model.CurrentPage > 1)
+            {
+                <li class="page-item">
+                    <a asp-action="Search" asp-controller="Home" asp-route-title="@Model.Title" asp-route-page="@(Model.CurrentPage-1)" class="page-link" aria-label="Previous">
+                        <span aria-hidden="true">&laquo;</span>
+                    </a>
+                </li>
+            }
+            @for (int i = Model.CurrentPage - Model.PageCount; i <= Model.CurrentPage + Model.PageCount; i++)
+            {
+                if (i > 0 && i <= Model.Total)
+                {
+                    <li class="page-item @(Model.CurrentPage==i ? "active":"")">
+                        <a asp-action="Search" asp-controller="Home" asp-route-title="@Model.Title" asp-route-page="@i" class="page-link">@i</a>
+                    </li>
+                }
+            }
+
+            @if (Model.CurrentPage < Model.TotalPages)
+            {
+                <li class="page-item">
+                    <a asp-action="Search" asp-controller="Home" asp-route-title="@Model.Title" asp-route-page="@(Model.CurrentPage+1)" class="page-link" aria-label="Next">
+                        <span aria-hidden="true">&raquo;</span>
+                    </a>
+                </li>
+            }
+
         </ul>
     </nav>
 }

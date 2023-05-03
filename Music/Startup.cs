@@ -5,6 +5,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Music.Extensions;
+using Music.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -31,6 +32,8 @@ namespace Music
         {
             services.AddControllersWithViews();
             services.AddHttpClient();
+            services.AddSingleton<IRecentMusicStorage, RecentMusicStorage>();
+
             services.AddMusicApi(options =>
             {
                 //options.Apikey = Configuration[("MusicApi:ApiKey")];

@@ -8,7 +8,7 @@ namespace Music.Services
 {
    public interface IMusicApiService
     {
-        Task<MusicApiResponse> SearchByNameAsync(string name);
+        Task<MusicApiResponse> SearchByNameAsync(string name, int page);
         Task<MusicApiAlbum> SearchByTrackAsync(int id);
     }
 }

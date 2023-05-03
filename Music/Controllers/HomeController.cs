@@ -2,6 +2,7 @@
 using Microsoft.Extensions.Logging;
 using Music.Models;
 using Music.Services;
+using Music.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -20,15 +21,17 @@ namespace Music.Controllers
         //}
 
         private readonly IMusicApiService musicApiService;
+        private readonly IRecentMusicStorage recentMusicStorage;
 
-        public HomeController(IMusicApiService musicApiService)
+        public HomeController(IMusicApiService musicApiService, IRecentMusicStorage recentMusicStorage)
         {
             this.musicApiService = musicApiService;
+            this.recentMusicStorage = recentMusicStorage;
         }
 
         public IActionResult Index()
         {
-            return View();
+            return View(recentMusicStorage.GetMusics());
         }
 
         public IActionResult Privacy()
@@ -36,17 +39,27 @@ namespace Music.Controllers
             return View();
         }
 
-        public async Task<IActionResult> Search(string title)
+        public async Task<IActionResult> Search(string title, int page = 1)
         {
-            MusicApiResponse musics = null;
+            HomeSearchViewModel results = null;
             if (title != null)
             {
-                musics = await musicApiService.SearchByNameAsync(title);
-                ViewBag.SearchName = title;
-                ViewBag.Results = musics.data;
+                MusicApiResponse musics = await musicApiService.SearchByNameAsync(title, page);
+                results = new HomeSearchViewModel
+                {
+                    Musics = musics.data,
+                    CurrentPage = page,
+                    Title = title,
+                    TotalPages = (int)Math.Ceiling(musics.total / 25.0),
+                    PageCount = 4,
+                    Total = musics.total,
+                    Next = musics.next
+                };
+                //ViewBag.SearchName = title;
+                //ViewBag.Results = musics.data;
                 
             }
-            return View(musics);
+            return View(results);
         }
 
         public async Task<IActionResult> Music(int id)
@@ -55,6 +68,7 @@ namespace Music.Controllers
             if (id != null)
             {
                 musics = await musicApiService.SearchByTrackAsync(id);
+                //recentMusicStorage.Add(musics);
             }
             return View(musics);
         }
