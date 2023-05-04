@@ -39,7 +39,7 @@ namespace Music.Controllers
             return View();
         }
 
-        public async Task<IActionResult> Search(string title, int page = 1)
+        public async Task<IActionResult> Search(string title, int page = 0)
         {
             HomeSearchViewModel results = null;
             if (title != null)
@@ -50,7 +50,7 @@ namespace Music.Controllers
                     Musics = musics.data,
                     CurrentPage = page,
                     Title = title,
-                    TotalPages = (int)Math.Ceiling(musics.total / 25.0),
+                    TotalPages = (int)Math.Ceiling(musics.total / 10.0),
                     PageCount = 4,
                     Total = musics.total,
                     Next = musics.next
@@ -68,7 +68,7 @@ namespace Music.Controllers
             if (id != null)
             {
                 musics = await musicApiService.SearchByTrackAsync(id);
-                //recentMusicStorage.Add(musics);
+                recentMusicStorage.Add(musics.tracks.data[0]);
             }
             return View(musics);
         }

@@ -29,7 +29,7 @@
             }
             @for (int i = Model.CurrentPage - Model.PageCount; i <= Model.CurrentPage + Model.PageCount; i++)
             {
-                if (i > 0 && i <= Model.Total)
+                if (i > 0 && i <= Model.TotalPages - 1)
                 {
                     <li class="page-item @(Model.CurrentPage==i ? "active":"")">
                         <a asp-action="Search" asp-controller="Home" asp-route-title="@Model.Title" asp-route-page="@i" class="page-link">@i</a>

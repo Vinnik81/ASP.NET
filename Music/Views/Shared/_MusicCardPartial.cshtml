@@ -5,23 +5,34 @@
 
 <div class="card">
     <div class="img-container">
-        <div class="img-blur" style="background-image:url(@Model.album.cover_medium)"></div>
-        <img src="@Model.album.cover_medium" class="card-img-top" alt="..." />
+        @if (Model != null && Model.album != null)
+        {
+            <div class="img-blur" style="background-image:url(@Model.album.cover_medium)"></div>
+            <img src="@Model.album.cover_medium" class="card-img-top" alt="..." />
+        }
     </div>
 </div>
     
 
 
-    <div class="card-body">
+<div class="card-body">
+    @if (Model != null && Model.album != null)
+    {
         <h5 class="card-title">@Model.artist.name</h5>
         <p class="card-text">Album: @Model.album.title</p>
         <audio src="@Model.preview" controls>Play</audio>
+    }
 
+
+    @if (Model != null && Model.album != null)
+    {
         @if (Model.album.type == "album")
         {
             @*<a asp-action="Music" asp-controller="Home" asp-route-id="@Model.album.id" class="btn btn-primary">Track List</a>*@
 
             <a music="@Model"></a>
         }
-    </div>
+    }
+
+</div>
 
