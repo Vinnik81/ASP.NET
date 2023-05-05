@@ -1,10 +1,33 @@
 ﻿/* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
 for details on configuring this project to bundle and minify static web assets. */
 
+.navbar {
+    background: radial-gradient(circle, #f00700 0%, #00c8ff 100%); /*/#F44336, #2196F3/*/
+    background-size: 200% auto;
+    background-position: left center;
+    animation: gradient 4s ease infinite;
+}
+
+@keyframes gradient {
+    0% {
+        background-position: left center;
+    }
+
+    100% {
+        background-position: right center;
+    }
+}
+
+body {
+    background-image: url(../images/dj-mag.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
 a.navbar-brand {
-  white-space: normal;
-  text-align: center;
-  word-break: break-all;
+    white-space: normal;
+    text-align: center;
+    word-break: break-all;
 }
 
 /* Provide sufficient contrast against white background */
@@ -16,6 +39,12 @@ a {
   color: #fff;
   background-color: #1b6ec2;
   border-color: #1861ac;
+}
+
+ .nav-link {
+    font-weight: bold;
+    color: black;
+    font-size: 30px;
 }
 
 .nav-pills .nav-link.active, .nav-pills .show > .nav-link {
@@ -96,9 +125,27 @@ body {
   margin-bottom: 60px;
 }
 .footer {
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  white-space: nowrap;
-  line-height: 60px; /* Vertically center the text there */
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    white-space: nowrap;
+    line-height: 60px; /* Vertically center the text there */
+    background: radial-gradient(circle, #F44336, #2196F3); 
+    background-size: 200% auto;
+    background-position: left center;
+    animation: gradient 4s ease infinite;
+}
+
+@keyframes gradient {
+    0% {
+        background-position: left center;
+    }
+
+    100% {
+        background-position: right center;
+    }
+}
+
+p, h1, h2, h5, small {
+    color:crimson;
 }
