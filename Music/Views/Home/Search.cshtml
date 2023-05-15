@@ -55,6 +55,33 @@
     {
         <h1>Not found</h1>
     }
+
+    @section Scripts {
+        <script>
+            let page = 10;
+            let isLoading = false;
+
+            window.addEventListener('scroll', () => {
+                const scrollHeight = document.documentElement.scrollHeight;
+                const scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+                const clientHeight = document.documentElement.clientHeight;
+
+                if (scrollTop + clientHeight >= scrollHeight && !isLoading) {
+                    page++;
+                    isLoading = true;
+                    fetch($"https://api.deezer.com/search?q={@Model.Title}&index={page}&limit=12")
+                        .then(res => res.json())
+                        .then(data => {
+                            isLoading = false;
+                        })
+                        .catch(err => {
+                            console.error(err);
+                            isLoading = false;
+                        });
+                }
+            });
+        </script>
+    }
 }
 catch (Exception)
 {
