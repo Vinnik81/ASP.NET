@@ -69,7 +69,7 @@
                 if (scrollTop + clientHeight >= scrollHeight && !isLoading) {
                     page++;
                     isLoading = true;
-                    fetch($"https://api.deezer.com/search?q={@Model.Title}&index={page}&limit=12")
+                    fetch(`https://api.deezer.com/search?q={@Model.Title}&index={page}&limit=12`)
                         .then(res => res.json())
                         .then(data => {
                             isLoading = false;
