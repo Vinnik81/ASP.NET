@@ -92,6 +92,17 @@ namespace Movie_5.Controllers
             return View(movies);
         }
 
+        public async Task<IActionResult> MovieModal(string id)
+        {
+            Cinema movies = null;
+            if (id != null)
+            {
+                movies = await movieApiService.SearchByIdAsync(id);
+            }
+
+            return PartialView("_MovieModalPartial", movies);
+        }
+
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {

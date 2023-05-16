@@ -11,11 +11,10 @@
         <h5 class="card-title">@Model.Title</h5>
         <p class="card-text">Year : @Model.Year</p>
 
-        @if (Model.Plot == null)
-        {
+       
 
-            <a movie="@Model"></a>
-        }
+        <a movie-type="Full" movie="@Model"></a>
+        <a movie-type="Modal" movie="@Model" data-open-modal></a>
 
     </div>
 </div>

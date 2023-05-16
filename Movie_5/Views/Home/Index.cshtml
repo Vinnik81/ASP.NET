@@ -3,11 +3,6 @@
 }
 @model IEnumerable<Cinema>
 
-@*@Html.MovieLink()*@
-@*@Html.EmalLink("358979037vvv@gmail.com","Vladimir")*@
-@*@Html.EmalLink2("358979037vvv@gmail.com", "Vladimir")*@
-@*<email-link email="358979037vvv@gmail.com" my-title="Vladimir"></email-link>*@
-@*<a my-email="358979037vvv@gmail.com" my-title="Vladimir"></a>*@
 
 <div class="text-center">
     <h1 class="display-4">Movie</h1>
@@ -19,13 +14,15 @@
     {
         <h1>Recent movies</h1><hr />
     }
-    
+
 </div>
 <div class="row">
     @foreach (var item in Model)
     {
-    <div class="col-3">
-        <partial name="_MovieCardPartial" model="@item"></partial>
-    </div>
+        <div class="col-3">
+            <partial name="_MovieCardPartial" model="@item"></partial>
+        </div>
     }
 </div>
+
+<partial name="_ModalWindowPartial"></partial>
