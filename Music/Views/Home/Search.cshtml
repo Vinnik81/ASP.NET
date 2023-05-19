@@ -58,10 +58,10 @@
 
     @section Scripts {
         <script>
-            let page = 10;
+            let page = @Model.CurrentPage;
             let isLoading = false;
 
-            window.addEventListener('scroll', () => {
+            window.addEventListener('scroll', async () => {
                 const scrollHeight = document.documentElement.scrollHeight;
                 const scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
                 const clientHeight = document.documentElement.clientHeight;
@@ -69,7 +69,7 @@
                 if (scrollTop + clientHeight >= scrollHeight && !isLoading) {
                     page++;
                     isLoading = true;
-                    fetch(`https://api.deezer.com/search?q={@Model.Title}&index={page}&limit=12`)
+                    await fetch(`https://api.deezer.com/search?q=@Model.Title&index=@Model.CurrentPage&limit=12`)
                         .then(res => res.json())
                         .then(data => {
                             isLoading = false;
@@ -79,6 +79,7 @@
                             isLoading = false;
                         });
                 }
+                console.log('scroll');
             });
         </script>
     }
