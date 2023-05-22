@@ -27,7 +27,7 @@ namespace Music.Services
             this.memoryCache = memoryCache;
         }
 
-        public async Task<MusicApiResponse> SearchByNameAsync(string title, int page = 0)
+        public async Task<MusicApiResponse> SearchByNameAsync(string title, int page = 1)
         {
             title = title.ToLower();
             MusicApiResponse musics;

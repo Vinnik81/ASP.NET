@@ -39,7 +39,7 @@ namespace Music.Controllers
             return View();
         }
 
-        public async Task<IActionResult> Search(string title, int page = 0)
+        public async Task<IActionResult> Search(string title, int page = 1)
         {
             HomeSearchViewModel results = null;
             if (title != null)
@@ -60,6 +60,12 @@ namespace Music.Controllers
                 
             }
             return View(results);
+        }
+
+        public async Task<ActionResult> SearchResult(string title, int page = 1)
+        {
+            MusicApiResponse musics = await musicApiService.SearchByNameAsync(title, page);
+            return PartialView("_MusicListPartial", musics.data);
         }
 
         public async Task<IActionResult> Music(int id)

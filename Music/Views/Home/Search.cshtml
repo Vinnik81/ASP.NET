@@ -11,15 +11,16 @@
         <small>Result: @Model.Total</small>
         @*<p>@ViewBag.Results</p>*@
 
-        <div class="row">
-            @foreach (Datum item in Model.Musics)
+        <div class="row" id="musicResults">
+            @*@foreach (Datum item in Model.Musics)
             {
                 <div class="card col-3">
                     <partial name="_MusicCardPartial" model="@item"></partial>
                 </div>
-            }
+            }*@
+            <partial name="_MusicListPartial" model="@Model.Musics"></partial>
         </div>
-        <nav aria-label="Page navigation example">
+        <nav aria-label="Page navigation example" id="pogination">
             <ul class="pagination d-flex align-content-center justify-content-center">
                 @if (Model.CurrentPage > 1)
                 {
@@ -58,29 +59,7 @@
 
     @section Scripts {
         <script>
-            let page = @Model.CurrentPage;
-            let isLoading = false;
-
-            window.addEventListener('scroll', async () => {
-                const scrollHeight = document.documentElement.scrollHeight;
-                const scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
-                const clientHeight = document.documentElement.clientHeight;
-
-                if (scrollTop + clientHeight >= scrollHeight && !isLoading) {
-                    page++;
-                    isLoading = true;
-                    await fetch(`https://api.deezer.com/search?q=@Model.Title&index=@Model.CurrentPage&limit=12`)
-                        .then(res => res.json())
-                        .then(data => {
-                            isLoading = false;
-                        })
-                        .catch(err => {
-                            console.error(err);
-                            isLoading = false;
-                        });
-                }
-                console.log('scroll');
-            });
+            initPagination(@Model.CurrentPage, @Model.TotalPages, '@Url.ActionLink("SearchResult", "Home", new {title = Model.Title})');
         </script>
     }
 }

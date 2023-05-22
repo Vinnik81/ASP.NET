@@ -1,0 +1,8 @@
+﻿@model IEnumerable<Datum>
+
+@foreach (Datum item in Model)
+{
+<div class="card col-md-3">
+    <partial name="_MusicCardPartial" model="@item"></partial>
+</div>
+}
