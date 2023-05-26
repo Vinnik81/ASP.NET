@@ -1,15 +1,15 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-using Movie_5.Models;
-using Movie_5.Services;
-using Movie_5.ViewModels;
+using Movie_6.Models;
+using Movie_6.Services;
+using Movie_6.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Movie_5.Controllers
+namespace Movie_6.Controllers
 {
     public class HomeController : Controller
     {
@@ -79,6 +79,11 @@ namespace Movie_5.Controllers
             return View(results);
         }
 
+        public async Task<IActionResult> SearchResult(string title, int page = 1)
+        {
+            MovieApiResponse movies = await movieApiService.SearchByTitleAsync(title, page);
+            return PartialView("_MovieListPartial", movies.Movies);
+        }
 
         public async Task<IActionResult> Movie(string id)
         {

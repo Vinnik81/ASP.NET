@@ -13,5 +13,5 @@ $('[data-open-modal]').click(async function () {
 
     $('.modal-body').html(result);
     console.log(url);
+});
 
-})

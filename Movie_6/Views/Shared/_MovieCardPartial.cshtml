@@ -1,0 +1,20 @@
+﻿@model Cinema
+
+
+<div class="card">
+    <div class="img-container">
+        <div class="img-blur" style="background-image:url(@Model.Poster)"></div>
+        <img src="@Model.Poster" onerror="event.target.src='/images/placeholder.png'" class="card-img-top" alt="...">
+    </div>
+    
+    <div class="card-body">
+        <h5 class="card-title">@Model.Title</h5>
+        <p class="card-text">Year : @Model.Year</p>
+
+       
+
+        <a movie-type="Full" movie="@Model"></a>
+        <a movie-type="Modal" movie="@Model" data-open-modal></a>
+
+    </div>
+</div>
