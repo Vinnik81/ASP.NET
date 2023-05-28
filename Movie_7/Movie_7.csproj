@@ -1,0 +1,247 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Eshopper\**" />
+    <Content Remove="Eshopper\**" />
+    <EmbeddedResource Remove="Eshopper\**" />
+    <None Remove="Eshopper\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Remove="wwwroot\css\animate.css" />
+    <Content Remove="wwwroot\css\bootstrap.min.css" />
+    <Content Remove="wwwroot\css\font-awesome.min.css" />
+    <Content Remove="wwwroot\css\main.css" />
+    <Content Remove="wwwroot\css\prettyPhoto.css" />
+    <Content Remove="wwwroot\css\price-range.css" />
+    <Content Remove="wwwroot\css\responsive.css" />
+    <Content Remove="wwwroot\fonts\fontawesome-webfont.svg" />
+    <Content Remove="wwwroot\fonts\fontawesome-webfont.woff" />
+    <Content Remove="wwwroot\fonts\FontAwesome.otf" />
+    <Content Remove="wwwroot\fonts\glyphicons-halflings-regular.svg" />
+    <Content Remove="wwwroot\fonts\glyphicons-halflings-regular.woff" />
+    <Content Remove="wwwroot\images\404\404.png" />
+    <Content Remove="wwwroot\images\blog\blog-one.jpg" />
+    <Content Remove="wwwroot\images\blog\blog-three.jpg" />
+    <Content Remove="wwwroot\images\blog\blog-two.jpg" />
+    <Content Remove="wwwroot\images\blog\man-four.jpg" />
+    <Content Remove="wwwroot\images\blog\man-one.jpg" />
+    <Content Remove="wwwroot\images\blog\man-three.jpg" />
+    <Content Remove="wwwroot\images\blog\man-two.jpg" />
+    <Content Remove="wwwroot\images\blog\socials.png" />
+    <Content Remove="wwwroot\images\cart\one.png" />
+    <Content Remove="wwwroot\images\cart\three.png" />
+    <Content Remove="wwwroot\images\cart\two.png" />
+    <Content Remove="wwwroot\images\home\bg_border.png" />
+    <Content Remove="wwwroot\images\home\gallery1.jpg" />
+    <Content Remove="wwwroot\images\home\gallery2.jpg" />
+    <Content Remove="wwwroot\images\home\gallery3.jpg" />
+    <Content Remove="wwwroot\images\home\gallery4.jpg" />
+    <Content Remove="wwwroot\images\home\girl1.jpg" />
+    <Content Remove="wwwroot\images\home\girl2.jpg" />
+    <Content Remove="wwwroot\images\home\girl3.jpg" />
+    <Content Remove="wwwroot\images\home\iframe1.png" />
+    <Content Remove="wwwroot\images\home\iframe2.png" />
+    <Content Remove="wwwroot\images\home\iframe3.png" />
+    <Content Remove="wwwroot\images\home\iframe4.png" />
+    <Content Remove="wwwroot\images\home\logo.png" />
+    <Content Remove="wwwroot\images\home\map.png" />
+    <Content Remove="wwwroot\images\home\new.png" />
+    <Content Remove="wwwroot\images\home\partner1.png" />
+    <Content Remove="wwwroot\images\home\partner2.png" />
+    <Content Remove="wwwroot\images\home\partner3.png" />
+    <Content Remove="wwwroot\images\home\partner4.png" />
+    <Content Remove="wwwroot\images\home\pricing.png" />
+    <Content Remove="wwwroot\images\home\product1.jpg" />
+    <Content Remove="wwwroot\images\home\product2.jpg" />
+    <Content Remove="wwwroot\images\home\product3.jpg" />
+    <Content Remove="wwwroot\images\home\product4.jpg" />
+    <Content Remove="wwwroot\images\home\product5.jpg" />
+    <Content Remove="wwwroot\images\home\product6.jpg" />
+    <Content Remove="wwwroot\images\home\recommend1.jpg" />
+    <Content Remove="wwwroot\images\home\recommend2.jpg" />
+    <Content Remove="wwwroot\images\home\recommend3.jpg" />
+    <Content Remove="wwwroot\images\home\sale.png" />
+    <Content Remove="wwwroot\images\home\searchicon.png" />
+    <Content Remove="wwwroot\images\home\shipping.jpg" />
+    <Content Remove="wwwroot\images\product-details\1.jpg" />
+    <Content Remove="wwwroot\images\product-details\new.jpg" />
+    <Content Remove="wwwroot\images\product-details\rating.png" />
+    <Content Remove="wwwroot\images\product-details\share.png" />
+    <Content Remove="wwwroot\images\product-details\similar1 (1).jpg" />
+    <Content Remove="wwwroot\images\product-details\similar1.jpg" />
+    <Content Remove="wwwroot\images\product-details\similar2.jpg" />
+    <Content Remove="wwwroot\images\product-details\similar3.jpg" />
+    <Content Remove="wwwroot\images\shop\advertisement.jpg" />
+    <Content Remove="wwwroot\images\shop\product10.jpg" />
+    <Content Remove="wwwroot\images\shop\product11.jpg" />
+    <Content Remove="wwwroot\images\shop\product12.jpg" />
+    <Content Remove="wwwroot\images\shop\product7.jpg" />
+    <Content Remove="wwwroot\images\shop\product8.jpg" />
+    <Content Remove="wwwroot\images\shop\product9.jpg" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Update="appsettings.Development.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Update="appsettings.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Update="Views\Home\Index.cshtml">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Update="Views\Home\Privacy.cshtml">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Update="Views\Home\Search.cshtml">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Update="Views\Shared\Error.cshtml">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Update="Views\Shared\_Layout.cshtml">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Update="Views\Shared\_ModalWindowPartial.cshtml">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Update="Views\Shared\_MovieCardPartial.cshtml">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Update="Views\Shared\_MovieListPartial.cshtml">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Update="Views\Shared\_MovieModalPartial.cshtml">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Update="Views\Shared\_ValidationScriptsPartial.cshtml">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Update="Views\_ViewImports.cshtml">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Update="Views\_ViewStart.cshtml">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Update="wwwroot\css\site.css">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Update="wwwroot\js\site.js">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <UpToDateCheckInput Remove="Views\Home\Movie.cshtml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <_ContentIncludedByDefault Remove="Views\Home\Movie.cshtml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="Controllers\HomeController.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="wwwroot\css\animate.css" />
+    <None Include="wwwroot\css\bootstrap.min.css" />
+    <None Include="wwwroot\css\font-awesome.min.css" />
+    <None Include="wwwroot\css\main.css" />
+    <None Include="wwwroot\css\prettyPhoto.css" />
+    <None Include="wwwroot\css\price-range.css" />
+    <None Include="wwwroot\css\responsive.css" />
+    <None Include="wwwroot\fonts\fontawesome-webfont.svg" />
+    <None Include="wwwroot\fonts\fontawesome-webfont.woff" />
+    <None Include="wwwroot\fonts\FontAwesome.otf" />
+    <None Include="wwwroot\fonts\glyphicons-halflings-regular.svg" />
+    <None Include="wwwroot\fonts\glyphicons-halflings-regular.woff" />
+    <None Include="wwwroot\images\404\404.png" />
+    <None Include="wwwroot\images\blog\blog-one.jpg" />
+    <None Include="wwwroot\images\blog\blog-three.jpg" />
+    <None Include="wwwroot\images\blog\blog-two.jpg" />
+    <None Include="wwwroot\images\blog\man-four.jpg" />
+    <None Include="wwwroot\images\blog\man-one.jpg" />
+    <None Include="wwwroot\images\blog\man-three.jpg" />
+    <None Include="wwwroot\images\blog\man-two.jpg" />
+    <None Include="wwwroot\images\blog\socials.png" />
+    <None Include="wwwroot\images\cart\one.png" />
+    <None Include="wwwroot\images\cart\three.png" />
+    <None Include="wwwroot\images\cart\two.png" />
+    <None Include="wwwroot\images\home\bg_border.png" />
+    <None Include="wwwroot\images\home\gallery1.jpg" />
+    <None Include="wwwroot\images\home\gallery2.jpg" />
+    <None Include="wwwroot\images\home\gallery3.jpg" />
+    <None Include="wwwroot\images\home\gallery4.jpg" />
+    <None Include="wwwroot\images\home\girl1.jpg" />
+    <None Include="wwwroot\images\home\girl2.jpg" />
+    <None Include="wwwroot\images\home\girl3.jpg" />
+    <None Include="wwwroot\images\home\iframe1.png" />
+    <None Include="wwwroot\images\home\iframe2.png" />
+    <None Include="wwwroot\images\home\iframe3.png" />
+    <None Include="wwwroot\images\home\iframe4.png" />
+    <None Include="wwwroot\images\home\logo.png" />
+    <None Include="wwwroot\images\home\map.png" />
+    <None Include="wwwroot\images\home\new.png" />
+    <None Include="wwwroot\images\home\partner1.png" />
+    <None Include="wwwroot\images\home\partner2.png" />
+    <None Include="wwwroot\images\home\partner3.png" />
+    <None Include="wwwroot\images\home\partner4.png" />
+    <None Include="wwwroot\images\home\pricing.png" />
+    <None Include="wwwroot\images\home\product1.jpg" />
+    <None Include="wwwroot\images\home\product2.jpg" />
+    <None Include="wwwroot\images\home\product3.jpg" />
+    <None Include="wwwroot\images\home\product4.jpg" />
+    <None Include="wwwroot\images\home\product5.jpg" />
+    <None Include="wwwroot\images\home\product6.jpg" />
+    <None Include="wwwroot\images\home\recommend1.jpg" />
+    <None Include="wwwroot\images\home\recommend2.jpg" />
+    <None Include="wwwroot\images\home\recommend3.jpg" />
+    <None Include="wwwroot\images\home\sale.png" />
+    <None Include="wwwroot\images\home\searchicon.png" />
+    <None Include="wwwroot\images\home\shipping.jpg" />
+    <None Include="wwwroot\images\product-details\1.jpg" />
+    <None Include="wwwroot\images\product-details\new.jpg" />
+    <None Include="wwwroot\images\product-details\rating.png" />
+    <None Include="wwwroot\images\product-details\share.png" />
+    <None Include="wwwroot\images\product-details\similar1 (1).jpg" />
+    <None Include="wwwroot\images\product-details\similar1.jpg" />
+    <None Include="wwwroot\images\product-details\similar2.jpg" />
+    <None Include="wwwroot\images\product-details\similar3.jpg" />
+    <None Include="wwwroot\images\shop\advertisement.jpg" />
+    <None Include="wwwroot\images\shop\product10.jpg" />
+    <None Include="wwwroot\images\shop\product11.jpg" />
+    <None Include="wwwroot\images\shop\product12.jpg" />
+    <None Include="wwwroot\images\shop\product7.jpg" />
+    <None Include="wwwroot\images\shop\product8.jpg" />
+    <None Include="wwwroot\images\shop\product9.jpg" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+  </ItemGroup>
+
+</Project>

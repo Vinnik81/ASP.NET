@@ -1,0 +1,87 @@
+﻿@model HomeSearchViewModel
+@{
+    ViewData["Title"] = "Search";
+}
+
+@if (Model.Response != "False")
+{
+    <h1>Search @Model.Title</h1>
+    <small>Result : @Model.TotalResults</small>
+
+
+    <div class="row" id="movieResults">
+        @*@foreach (Cinema item in @Model.Cinemas)
+        {
+
+
+            <div class="col-3">
+                <partial name="_MovieCardPartial" model="@item"></partial>
+            </div>
+
+        }*@
+
+        <partial name="_MovieListPartial" model="@Model.Cinemas"></partial>
+
+    </div>
+
+
+    @*<nav aria-label="Page navigation example ">
+        <ul class="m-3 pagination d-flex align-content-center justify-content-center">
+
+            @if (Model.CurrentPage > 1)
+            {
+
+                <li class="page-item"><a asp-action="Search" asp-controller="Home" asp-route-title="@Model.Title" asp-route-page="@(Model.CurrentPage-1)" class="page-link">Previous</a></li>
+
+            }
+            @for (var i = Model.CurrentPage - Model.PageCount; i <= Model.CurrentPage + Model.PageCount; i++)
+            {
+                if (i > 0 && i <= @Model.TotalPages)
+                {
+                    <li class="page-item @(Model.CurrentPage==i ? "active":"")"><a asp-action="Search" asp-controller="Home" asp-route-title="@Model.Title" asp-route-page="@i" class="page-link">@i</a></li>
+                }
+
+            }
+
+            @if (Model.CurrentPage < Model.TotalPages)
+            {
+                <li class="page-item"><a asp-action="Search" asp-controller="Home" asp-route-title="@Model.Title" asp-route-page="@(Model.CurrentPage+1)" class="page-link">Next</a></li>
+
+            }
+        </ul>
+    </nav>*@
+}
+else
+{
+    <h1>Not found</h1>
+}
+
+<partial name="_ModalWindowPartial"></partial>
+
+@section Scripts{
+    <script>
+        initPagination(@Model.CurrentPage, @Model.TotalPages, '@Url.ActionLink("SearchResult", "Home", new {title = @Model.Title})');
+
+             // let title = '@Model.Title';
+        //$('#buttonNext').click(async function() {
+        //    page++;
+
+        //    if(page < totalPages){
+        //           ///Home/SearchResult?title=Hulk&page=
+        //    let url = '@Url.ActionLink("SearchResult","Home",new {title = @Model.Title})'
+        //    let response = await fetch(`${url}&page=${page}`);
+        //    let html = await response.text();
+        //    console.log(html);
+        //    $('#movieResults').append(html);
+        //    }else{
+        //        $(this).remove();
+        //    }
+
+        //});
+                //$(document).ready(function() {
+                //    $("#exampleModal").modal('show');
+                //});
+
+    </script>
+    }
+}
