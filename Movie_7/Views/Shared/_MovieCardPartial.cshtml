@@ -1,7 +1,7 @@
 ﻿@model Cinema
 
 
-<div class="card">
+@*<div class="card">
     <div class="img-container">
         <div class="img-blur" style="background-image:url(@Model.Poster)"></div>
         <img src="@Model.Poster" onerror="event.target.src='/images/placeholder.png'" class="card-img-top" alt="...">
@@ -16,5 +16,24 @@
         <a movie-type="Full" movie="@Model"></a>
         <a movie-type="Modal" movie="@Model" data-open-modal></a>
 
+    </div>
+</div>*@
+
+<div class="product-image-wrapper">
+    <div class="single-products">
+        <div class="productinfo text-center">
+            <img src="@Model.Poster" onerror="event.target.src='/images/placeholder.png'" alt="" />
+            <h2>@Model.Country</h2>
+            <p>@Model.Director</p>
+            <a movie-type="Full" movie="@Model" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Detail</a>
+        </div>
+        <div class="product-overlay">
+            <div class="overlay-content">
+                <h2>@Model.Title</h2>
+                <p>@Model.Year</p>
+                <a movie-type="Full" movie="@Model" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Detail</a>
+                <a movie-type="Modal" movie="@Model" data-open-modal class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Detail</a>
+            </div>
+        </div>
     </div>
 </div>
