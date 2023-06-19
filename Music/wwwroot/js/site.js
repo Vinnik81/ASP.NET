@@ -34,3 +34,28 @@ $(window).scroll(async function () {
         }
     }
 });
+
+function stopAudio(a) {
+    audioElement = a;
+}
+
+//var audioElements = document.getElementsByTagName('audio');
+//for (var i = 0; i < audioElements.length; i++) {
+//    audioElements[i].addEventListener("play", function () {
+//        // При нажатии на тег audio, останавливаем воспроизведение остальных треков
+//        for (var j = 0; j < audioElements.length; j++) {
+//            if (audioElements[j] != this) {
+//                audioElements[j].pause();
+//                audioElements[j].currentTime = 0;
+//            }
+//        }
+//    });
+//}
+
+$('audio').on('play', function () {
+    // При нажатии на тег audio, останавливаем воспроизведение остальных треков
+    $('audio').not(this).each(function () {
+        this.pause();
+        this.currentTime = 0;
+    });
+});
