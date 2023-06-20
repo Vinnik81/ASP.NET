@@ -28,6 +28,13 @@ $(window).scroll(async function () {
             console.log(html);
             $('#musicResults').append(html);
             isLoading = true;
+            $('audio').on('play', function () {
+                // При нажатии на тег audio, останавливаем воспроизведение остальных треков
+                $('audio').not(this).each(function () {
+                    this.pause();
+                    this.currentTime = 0;
+                });
+            });
         }
         else {
             $(this).remove();
@@ -35,9 +42,7 @@ $(window).scroll(async function () {
     }
 });
 
-function stopAudio(a) {
-    audioElement = a;
-}
+
 
 //var audioElements = document.getElementsByTagName('audio');
 //for (var i = 0; i < audioElements.length; i++) {
